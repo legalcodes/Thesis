@@ -6,8 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.js"></script>
 <script>
 
-var world = 'world-110m.json'
-
 var width = 960,
     height = 960;
 
@@ -30,14 +28,8 @@ var path = d3.geo.path()
 var title = d3.select("h1");
 
 queue()
-    .defer(d3.json, world)
-    .defer(d3.tsv('world-country-names.tsv', function(error, data){
-      if (error) throw error; 
-
-      // data.forEach(function(d){
-      //   if ()
-      // })
-    }))
+    .defer(d3.json, 'world-110m.json')
+    .defer(d3.tsv, "world-country-names.tsv")
     .await(ready);
 
 function ready(error, world, names) {
